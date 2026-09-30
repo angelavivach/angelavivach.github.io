@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Angela Vivanco · Portfolio</title>
   <meta name="description" content="Portfolio de Angela Vivanco, desarrolladora de aplicaciones multiplataforma.">
-  <link rel="icon" href="https://avatars.githubusercontent.com/u/181397543?v=4">
+  <link rel="icon" type="image/png" href="img/icon.png">
+  <link rel="apple-touch-icon" href="img/icon.png">
+  <meta property="og:image" content="https://angelavivach.github.io/img/avatar.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
@@ -126,6 +128,16 @@
     .skill { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 20px; }
     .skill h3 { font-size: 15px; margin-bottom: 12px; }
 
+    .avatar { width: 112px; height: 112px; border-radius: 50%; object-fit: cover; border: 3px solid var(--surface); box-shadow: 0 0 0 1px var(--border), 0 8px 24px rgba(0,0,0,.12); margin-bottom: 24px; display: block; }
+    .jde-intro { display: grid; grid-template-columns: 1.2fr 1fr; gap: 32px; align-items: start; margin-bottom: 24px; }
+    .jde-intro p { color: var(--muted); font-size: 17px; }
+    .jde-intro p + p { margin-top: 14px; }
+    .jde-stack { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 20px; font-family: "JetBrains Mono", monospace; font-size: 13px; }
+    .jde-stack div { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-bottom: 1px dashed var(--border); }
+    .jde-stack div:last-child { border-bottom: 0; }
+    .jde-stack span:first-child { color: var(--accent); }
+    .jde-stack span:last-child { color: var(--muted); text-align: right; }
+    .grid.three { grid-template-columns: repeat(3, 1fr); }
     .timeline { display: grid; gap: 16px; }
     .job {
       display: grid; grid-template-columns: 190px 1fr; gap: 24px;
@@ -153,6 +165,7 @@
       nav ul li:nth-child(n+3) { display: none; }
       .hero { padding: 64px 0 48px; }
       .job { grid-template-columns: 1fr; gap: 10px; }
+      .jde-intro, .grid.three { grid-template-columns: 1fr; }
       .featured, .grid, .skills, .about, .edu { grid-template-columns: 1fr; }
       .featured { padding: 22px; }
     }
@@ -164,6 +177,7 @@
       <a class="logo" href="#">angelavivach</a>
       <ul>
         <li><a href="#experiencia">Experiencia</a></li>
+        <li><a href="#jde">JD Edwards</a></li>
         <li><a href="#proyectos">Proyectos</a></li>
         <li><a href="#habilidades">Habilidades</a></li>
         <li><a href="#sobre-mi">Sobre mí</a></li>
@@ -173,6 +187,7 @@
 
   <header class="hero">
     <div class="wrap">
+      <img class="avatar" src="img/avatar.jpg" alt="Ilustración de Angela programando en su escritorio" width="112" height="112">
       <p class="hello">// hola, soy</p>
       <h1>Angela Vivanco.<br><span>Construyo aplicaciones web y herramientas útiles.</span></h1>
       <p>Técnica de Análisis y Desarrollo de Software en Incarlopsa, titulada en DAM y con un máster en Data Science &amp; AI. Me gusta crear cosas que resuelven problemas reales: desde aplicaciones empresariales full-stack hasta scripts que automatizan tareas del día a día.</p>
@@ -236,6 +251,47 @@
               <div class="tags"><span>Sistemas informáticos</span><span>Soporte técnico</span></div>
             </div>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="jde">
+      <div class="wrap">
+        <h2>JD Edwards · ERP</h2>
+        <div class="jde-intro">
+          <div>
+            <p>En Incarlopsa trabajo a diario con <strong>JD Edwards EnterpriseOne (JDE)</strong>, el ERP de Oracle con el que la empresa gestiona sus procesos de negocio: compras, ventas, inventario, finanzas y producción.</p>
+            <p>Mi papel está entre el ERP y el desarrollo: doy soporte a los usuarios que trabajan con JDE, resuelvo incidencias, mantengo las aplicaciones corporativas que se apoyan en él y desarrollo aplicaciones web propias con Node.js y Angular que complementan al ERP.</p>
+          </div>
+          <div class="jde-stack" aria-label="Conceptos de JDE con los que trabajo">
+            <div><span>F0101</span><span>Maestro de direcciones</span></div>
+            <div><span>F4101</span><span>Maestro de artículos</span></div>
+            <div><span>F4211</span><span>Líneas de pedido de venta</span></div>
+            <div><span>F0911</span><span>Libro mayor</span></div>
+            <div><span>126273</span><span>Fecha juliana → 30/09/2026</span></div>
+          </div>
+        </div>
+        <div class="grid three">
+          <article class="card">
+            <div class="icon">🎫</div>
+            <h3>Soporte e incidencias</h3>
+            <p>Gestión de incidencias con el sistema de ticketing: análisis del problema, soporte a los usuarios de JDE y seguimiento hasta que queda resuelto.</p>
+          </article>
+          <article class="card">
+            <div class="icon">🗄️</div>
+            <h3>Datos del ERP</h3>
+            <p>Consultas y administración de las bases de datos en las que se apoyan las aplicaciones: el modelo de tablas de JDE, su diccionario de datos y formatos propios como las fechas julianas.</p>
+          </article>
+          <article class="card">
+            <div class="icon">🔗</div>
+            <h3>Aplicaciones alrededor del ERP</h3>
+            <p>Desarrollo full-stack con Node.js y Angular de herramientas internas que cubren necesidades que el ERP no resuelve por sí solo, mejorando los procesos de la empresa.</p>
+          </article>
+        </div>
+        <div class="card" style="margin-top:16px">
+          <h3>Siguiente paso: aprendiendo</h3>
+          <p>Estoy profundizando en la parte técnica de JDE: <strong>Orchestrator Studio</strong> y la API REST <strong>AIS</strong> para integrar JDE con aplicaciones externas, el desarrollo de informes batch (<strong>UBE</strong>) y el análisis de datos del ERP aplicando lo aprendido en el máster de Data Science &amp; AI.</p>
+          <div class="tags"><span>JD Edwards E1</span><span>Orchestrator</span><span>AIS REST API</span><span>UBE</span><span>SQL</span></div>
         </div>
       </div>
     </section>
