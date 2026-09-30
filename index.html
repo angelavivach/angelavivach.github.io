@@ -141,6 +141,14 @@
     .jde-stack div:last-child { border-bottom: 0; }
     .jde-stack span:first-child { color: var(--accent); }
     .jde-stack span:last-child { color: var(--muted); text-align: right; }
+    .jde { margin-top: 32px; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 28px; }
+    .jde > h3 { font-size: 22px; letter-spacing: -0.02em; margin-bottom: 6px; }
+    .jde .sub { font-family: "JetBrains Mono", monospace; font-size: 13px; color: var(--accent); margin-bottom: 18px; }
+    .jde h4 { font-size: 15px; margin: 28px 0 14px; }
+    .curio { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    .curio div { border: 1px solid var(--border); border-radius: 12px; padding: 16px; background: var(--bg); }
+    .curio b { display: block; font-family: "JetBrains Mono", monospace; font-weight: 500; font-size: 13px; color: var(--accent); margin-bottom: 6px; }
+    .curio p { color: var(--muted); font-size: 14px; }
     .grid.three { grid-template-columns: repeat(3, 1fr); }
     .timeline { display: grid; gap: 16px; }
     .job {
@@ -169,7 +177,8 @@
       nav ul li:nth-child(n+3) { display: none; }
       .hero { padding: 64px 0 48px; }
       .job { grid-template-columns: 1fr; gap: 10px; }
-      .jde-intro, .grid.three { grid-template-columns: 1fr; }
+      .jde-intro, .grid.three, .curio { grid-template-columns: 1fr; }
+      .jde { padding: 20px; }
       .featured, .grid, .skills, .about, .edu { grid-template-columns: 1fr; }
       .featured { padding: 22px; }
     }
@@ -181,7 +190,6 @@
       <a class="logo" href="#">angelavivach</a>
       <ul>
         <li><a href="#experiencia">Experiencia</a></li>
-        <li><a href="#jde">JD Edwards</a></li>
         <li><a href="#proyectos">Proyectos</a></li>
         <li><a href="#habilidades">Habilidades</a></li>
         <li><a href="#sobre-mi">Sobre mí</a></li>
@@ -255,47 +263,6 @@
               <div class="tags"><span>Sistemas informáticos</span><span>Soporte técnico</span></div>
             </div>
           </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="jde">
-      <div class="wrap">
-        <h2>JD Edwards · ERP</h2>
-        <div class="jde-intro">
-          <div>
-            <p>En Incarlopsa trabajo a diario con <strong>JD Edwards EnterpriseOne (JDE)</strong>, el ERP de Oracle con el que la empresa gestiona sus procesos de negocio: compras, ventas, inventario, finanzas y producción.</p>
-            <p>Mi papel está entre el ERP y el desarrollo: doy soporte a los usuarios que trabajan con JDE, resuelvo incidencias, mantengo las aplicaciones corporativas que se apoyan en él y desarrollo aplicaciones web propias con Node.js y Angular que complementan al ERP.</p>
-          </div>
-          <div class="jde-stack" aria-label="Conceptos de JDE con los que trabajo">
-            <div><span>F0101</span><span>Maestro de direcciones</span></div>
-            <div><span>F4101</span><span>Maestro de artículos</span></div>
-            <div><span>F4211</span><span>Líneas de pedido de venta</span></div>
-            <div><span>F0911</span><span>Libro mayor</span></div>
-            <div><span>126273</span><span>Fecha juliana → 30/09/2026</span></div>
-          </div>
-        </div>
-        <div class="grid three">
-          <article class="card">
-            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-5Zm0 0a9 9 0 1 1 18 0m0 0v5a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3Z"/><path d="M21 16v2a4 4 0 0 1-4 4h-5"/></svg></div>
-            <h3>Soporte e incidencias</h3>
-            <p>Gestión de incidencias con el sistema de ticketing: análisis del problema, soporte a los usuarios de JDE y seguimiento hasta que queda resuelto.</p>
-          </article>
-          <article class="card">
-            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg></div>
-            <h3>Datos del ERP</h3>
-            <p>Consultas y administración de las bases de datos en las que se apoyan las aplicaciones: el modelo de tablas de JDE, su diccionario de datos y formatos propios como las fechas julianas.</p>
-          </article>
-          <article class="card">
-            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div>
-            <h3>Aplicaciones alrededor del ERP</h3>
-            <p>Desarrollo full-stack con Node.js y Angular de herramientas internas que cubren necesidades que el ERP no resuelve por sí solo, mejorando los procesos de la empresa.</p>
-          </article>
-        </div>
-        <div class="card" style="margin-top:16px">
-          <h3>Siguiente paso: aprendiendo</h3>
-          <p>Estoy profundizando en la parte técnica de JDE: <strong>Orchestrator Studio</strong> y la API REST <strong>AIS</strong> para integrar JDE con aplicaciones externas, el desarrollo de informes batch (<strong>UBE</strong>) y el análisis de datos del ERP aplicando lo aprendido en el máster de Data Science &amp; AI.</p>
-          <div class="tags"><span>JD Edwards E1</span><span>Orchestrator</span><span>AIS REST API</span><span>UBE</span><span>SQL</span></div>
         </div>
       </div>
     </section>
@@ -439,6 +406,37 @@
             <h3>Datos, IA y otras</h3>
             <div class="tags"><span>Data Science</span><span>IA</span><span>RPA</span><span>JD Edwards</span><span>WordPress</span><span>Git</span><span>Render</span></div>
           </div>
+        </div>
+
+        <div class="jde" id="jde">
+          <h3>JD Edwards EnterpriseOne</h3>
+          <div class="sub">ERP de Oracle · uso diario en Incarlopsa</div>
+          <div class="jde-intro">
+            <div>
+              <p>Trabajo entre el ERP y el desarrollo: doy soporte a los usuarios de JDE, resuelvo incidencias por ticketing, mantengo las aplicaciones corporativas que se apoyan en él y desarrollo con Node.js y Angular herramientas que cubren lo que el ERP no resuelve por sí solo.</p>
+              <p>Ahora estoy profundizando en la parte técnica: Orchestrator Studio y la API REST AIS para integrar JDE con aplicaciones externas, informes batch (UBE) y análisis de sus datos con lo aprendido en el máster.</p>
+            </div>
+            <div class="jde-stack" aria-label="Tablas y objetos de JDE">
+              <div><span>F0101</span><span>Maestro de direcciones</span></div>
+              <div><span>F4211</span><span>Líneas de pedido de venta</span></div>
+              <div><span>F0911</span><span>Libro mayor</span></div>
+              <div><span>P4210</span><span>App de entrada de pedidos</span></div>
+              <div><span>R42800</span><span>Informe de actualización de ventas</span></div>
+            </div>
+          </div>
+
+          <h4>Curiosidades de JDE que no son tan conocidas</h4>
+          <div class="curio">
+            <div><b>126273 = 30/09/2026</b><p>Las fechas se guardan como número juliano <code>CYYDDD</code>: siglo desde 1900, año y día del año. Nada de tipos DATE.</p></div>
+            <div><b>F · 42 · 11</b><p>El nombre de cada tabla dice a qué módulo pertenece: <code>F42</code> es gestión de pedidos, <code>F41</code> inventario, <code>F09</code> contabilidad general.</p></div>
+            <div><b>SDDOCO, ABAN8</b><p>Cada columna lleva delante dos letras de su tabla (<code>SD</code> para F4211, <code>AB</code> para F0101) seguidas del alias del diccionario de datos.</p></div>
+            <div><b>12550 → 125,50 €</b><p>Los importes se guardan sin coma decimal; cuántos decimales tiene lo define el diccionario de datos o la moneda, no la base de datos.</p></div>
+            <div><b>143025 = 14:30:25</b><p>Las horas también son enteros <code>HHMMSS</code>, así que una consulta SQL normal necesita convertir fechas y horas antes de poder comparar.</p></div>
+            <div><b>AN8</b><p>Un único número de agenda identifica a clientes, proveedores y empleados: todos viven en el mismo maestro de direcciones.</p></div>
+            <div><b>F0004 / F0005</b><p>Los "códigos definidos por el usuario" (UDC) guardan casi todas las listas de valores, como los tipos de documento <code>00/DT</code>.</p></div>
+            <div><b>Tablas Z</b><p>Las tablas acabadas en <code>Z1</code>, como <code>F0911Z1</code>, sirven de bandeja de entrada para importar transacciones por lotes desde otros sistemas.</p></div>
+          </div>
+          <div class="tags" style="margin-top:20px"><span>JD Edwards E1</span><span>Orchestrator</span><span>AIS REST API</span><span>UBE</span><span>UDC</span><span>SQL</span></div>
         </div>
       </div>
     </section>
