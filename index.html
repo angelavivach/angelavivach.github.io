@@ -108,7 +108,11 @@
       transition: border-color .15s, transform .15s;
     }
     .card:hover { border-color: var(--muted); transform: translateY(-2px); }
-    .card .icon { font-size: 22px; margin-bottom: 12px; }
+    .card .icon {
+      width: 40px; height: 40px; display: grid; place-items: center; margin-bottom: 14px;
+      border: 1px solid var(--border); border-radius: 10px; color: var(--accent);
+    }
+    .card .icon svg { width: 20px; height: 20px; }
     .card h3 { font-size: 18px; letter-spacing: -0.01em; }
     .card p { color: var(--muted); font-size: 15px; margin: 8px 0 16px; flex: 1; }
     .tags { display: flex; flex-wrap: wrap; gap: 6px; }
@@ -273,17 +277,17 @@
         </div>
         <div class="grid three">
           <article class="card">
-            <div class="icon">🎫</div>
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-5Zm0 0a9 9 0 1 1 18 0m0 0v5a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3Z"/><path d="M21 16v2a4 4 0 0 1-4 4h-5"/></svg></div>
             <h3>Soporte e incidencias</h3>
             <p>Gestión de incidencias con el sistema de ticketing: análisis del problema, soporte a los usuarios de JDE y seguimiento hasta que queda resuelto.</p>
           </article>
           <article class="card">
-            <div class="icon">🗄️</div>
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg></div>
             <h3>Datos del ERP</h3>
             <p>Consultas y administración de las bases de datos en las que se apoyan las aplicaciones: el modelo de tablas de JDE, su diccionario de datos y formatos propios como las fechas julianas.</p>
           </article>
           <article class="card">
-            <div class="icon">🔗</div>
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div>
             <h3>Aplicaciones alrededor del ERP</h3>
             <p>Desarrollo full-stack con Node.js y Angular de herramientas internas que cubren necesidades que el ERP no resuelve por sí solo, mejorando los procesos de la empresa.</p>
           </article>
@@ -351,7 +355,7 @@
 
         <div class="grid">
           <article class="card">
-            <div class="icon">📬</div>
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
             <h3>Gmail Cleaner</h3>
             <p>App web para vaciar una bandeja de Gmail saturada en unos clics. Buscas por categorías, revisas los resultados y los mandas a la papelera en bloque.</p>
             <ul class="points">
@@ -365,7 +369,7 @@
           </article>
 
           <article class="card">
-            <div class="icon">💶</div>
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 17.5v-11"/></svg></div>
             <h3>Balance Mensual</h3>
             <p>"Ticket" mensual para controlar la economía personal: apuntas la nómina y los gastos, y ves el balance del mes de un vistazo.</p>
             <ul class="points">
@@ -379,7 +383,7 @@
           </article>
 
           <article class="card">
-            <div class="icon">🧹</div>
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 17 10 11 4 5"/><line x1="12" x2="20" y1="19" y2="19"/></svg></div>
             <h3>Scripts de automatización</h3>
             <p>Userscripts para Tampermonkey que automatizan tareas repetitivas en redes sociales, como borrar cientos de favoritos de TikTok o limpiar listas de YouTube.</p>
             <ul class="points">
@@ -393,7 +397,7 @@
           </article>
 
           <article class="card">
-            <div class="icon">🎲</div>
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
             <h3>Mini-proyectos en Python</h3>
             <p>Colección de programas de consola: Sudoku, Ahorcado, Piedra-Papel-Tijera, calculadora y generador de contraseñas.</p>
             <div class="tags"><span>Python</span></div>
@@ -401,7 +405,7 @@
           </article>
 
           <article class="card">
-            <div class="icon">📚</div>
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
             <h3>DAM · 2.º curso</h3>
             <p>Prácticas de acceso a datos, desarrollo de interfaces, programación de procesos y servicios y programación multimedia.</p>
             <div class="tags"><span>Java</span><span>JDBC</span><span>Android</span></div>
@@ -409,7 +413,7 @@
           </article>
 
           <article class="card">
-            <div class="icon">🧮</div>
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
             <h3>DAM · 1.er curso</h3>
             <p>Ejercicios de bases de datos, programación en C y lenguajes de marcas.</p>
             <div class="tags"><span>SQL</span><span>C</span><span>HTML/XML</span></div>
