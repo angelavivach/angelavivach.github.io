@@ -130,6 +130,19 @@
     .snippet figcaption span:first-child { color: var(--text); }
     .snippet pre { font-variant-ligatures: none; margin: 0; padding: 14px; overflow-x: auto; font-family: "JetBrains Mono", monospace; font-size: 12px; line-height: 1.6; color: var(--code-text); }
     .snippet code { font: inherit; background: none; padding: 0; }
+    .terminal { margin: 0 0 18px; border-radius: 10px; overflow: hidden; background: #1a1b1e; border: 1px solid #2c2d31; box-shadow: 0 6px 20px rgba(0,0,0,.18); min-width: 0; }
+    .terminal .t-bar { display: flex; align-items: center; gap: 6px; padding: 9px 12px; background: #26272b; }
+    .terminal .t-bar i { width: 11px; height: 11px; border-radius: 50%; background: #ff5f57; }
+    .terminal .t-bar i:nth-child(2) { background: #febc2e; }
+    .terminal .t-bar i:nth-child(3) { background: #28c840; }
+    .terminal .t-bar span { flex: 1; text-align: center; margin-right: 45px; font-family: "JetBrains Mono", monospace; font-size: 11px; color: #9a9ba0; }
+    .terminal pre { margin: 0; padding: 14px; overflow-x: auto; font-family: "JetBrains Mono", monospace; font-size: 12px; line-height: 1.55; color: #d7d8dc; font-variant-ligatures: none; }
+    .terminal .t-cmd { color: #9a9ba0; }
+    .terminal .t-in { color: #fbbf24; font-weight: 500; }
+    .terminal .t-ok { color: #4ade80; }
+    .terminal .t-bad { color: #f87171; }
+    .terminal .t-win { color: #4ade80; font-weight: 500; }
+    .terminal .t-dim { color: #6b6c72; }
     .tok-k { color: var(--accent); }
     .tok-s { color: var(--code-str); }
     .tok-c { color: var(--muted); font-style: italic; }
@@ -460,23 +473,26 @@ const totalGastos = monthEntries.filter(e=&gt;e.type===&#x27;gasto&#x27;)
             <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
             <h3>Mini-proyectos en Python</h3>
             <p>Colección de programas de consola: Sudoku, Ahorcado, Piedra-Papel-Tijera, calculadora y generador de contraseñas.</p>
-            <figure class="snippet">
-              <figcaption><span>Sudoku.py</span><span>backtracking recursivo</span></figcaption>
-              <pre data-lang="py"><code># Función para resolver el tablero usando backtracking
-def resolver_sudoku(tablero):
-    vacio = encontrar_vacio(tablero)
-    if not vacio:
-        return True  # El tablero está completo y resuelto
-    else:
-        fila, columna = vacio
+            <figure class="terminal" aria-label="Partida real del juego del ahorcado en la terminal">
+              <div class="t-bar"><i></i><i></i><i></i><span>Hangman.py — terminal</span></div>
+              <pre><span class="t-cmd">$ python3 Hangman.py</span>
+¡Bienvenido al juego de Ahorcado!
 
-    for numero in range(1, 10):
-        if es_valido(tablero, numero, (fila, columna)):
-            tablero[fila][columna] = numero
-            if resolver_sudoku(tablero):
-                return True
-            tablero[fila][columna] = 0
-    return False</code></pre>
+Palabra actual:  _ _ _ _ _ _
+Intentos restantes: 6
+Adivina una letra: <span class="t-in">e</span>
+<span class="t-bad">Lo siento, la letra &#x27;e&#x27; no está en la palabra.</span>
+
+Palabra actual:  _ _ _ _ _ _
+Intentos restantes: 5
+Adivina una letra: <span class="t-in">p</span>
+<span class="t-ok">¡Correcto! La letra &#x27;p&#x27; está en la palabra.</span>
+<span class="t-dim">…</span>
+Palabra actual:  p y t h o _
+Intentos restantes: 4
+Adivina una letra: <span class="t-in">n</span>
+<span class="t-ok">¡Correcto! La letra &#x27;n&#x27; está en la palabra.</span>
+<span class="t-win">¡Felicidades! Has adivinado la palabra: python</span></pre>
             </figure>
             <ul class="points">
               <li>Sudoku resuelto con backtracking recursivo</li>
