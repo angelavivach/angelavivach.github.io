@@ -409,6 +409,21 @@
           </div>
         </div>
 
+        <div class="jde">
+          <h3>Habilidades menos comunes</h3>
+          <div class="sub">Cosas que he aplicado en proyectos reales, más allá del CRUD</div>
+          <div class="curio">
+            <div><b>Robots RPA con Python</b><p>En GESTELCOM programé robots que automatizan procesos que antes se hacían a mano, repitiendo clics, formularios y tareas administrativas sin intervención humana.</p></div>
+            <div><b>OAuth 2.0 y APIs de Google</b><p>Gmail Cleaner se conecta a la API de Gmail con el flujo OAuth de Google, guarda los tokens de forma segura y permite gestionar varias cuentas a la vez.</p></div>
+            <div><b>Automatización del navegador</b><p>Userscripts que "leen" la web de TikTok como lo haría una persona: localizan botones por sus atributos, comprueban que la acción se ha aplicado y se recuperan si la página cambia.</p></div>
+            <div><b>Seguridad web aplicada</b><p>En TimeCP configuré cabeceras CSP con Helmet, protección CSRF, límite de peticiones y sesiones JWT en cookies httpOnly, más allá de un simple login.</p></div>
+            <div><b>Bases de datos que se reparan solas</b><p>Esquemas idempotentes: al arrancar, la app crea las tablas que falten y corrige una base de datos antigua sin perder información.</p></div>
+            <div><b>Data Science e IA</b><p>Máster en Nuclio Digital School: análisis de datos, modelos de machine learning e IA aplicada, un complemento poco habitual en un perfil de desarrollo.</p></div>
+            <div><b>APIs con Spring Boot</b><p>Además de Node.js, he desarrollado APIs REST en Java con Spring Boot, el estándar en muchas empresas grandes.</p></div>
+            <div><b>Despliegue en la nube</b><p>Mis proyectos están publicados en Render con configuración como código (<code>render.yaml</code>), variables de entorno, discos persistentes y comprobaciones de salud.</p></div>
+          </div>
+        </div>
+
         <div class="jde" id="jde">
           <h3>JD Edwards EnterpriseOne</h3>
           <div class="sub">ERP de Oracle · uso diario en Incarlopsa</div>
@@ -426,17 +441,6 @@
             </div>
           </div>
 
-          <h4>Curiosidades de JDE que no son tan conocidas</h4>
-          <div class="curio">
-            <div><b>126273 = 30/09/2026</b><p>Las fechas se guardan como número juliano <code>CYYDDD</code>: siglo desde 1900, año y día del año. Nada de tipos DATE.</p></div>
-            <div><b>F · 42 · 11</b><p>El nombre de cada tabla dice a qué módulo pertenece: <code>F42</code> es gestión de pedidos, <code>F41</code> inventario, <code>F09</code> contabilidad general.</p></div>
-            <div><b>SDDOCO, ABAN8</b><p>Cada columna lleva delante dos letras de su tabla (<code>SD</code> para F4211, <code>AB</code> para F0101) seguidas del alias del diccionario de datos.</p></div>
-            <div><b>12550 → 125,50 €</b><p>Los importes se guardan sin coma decimal; cuántos decimales tiene lo define el diccionario de datos o la moneda, no la base de datos.</p></div>
-            <div><b>143025 = 14:30:25</b><p>Las horas también son enteros <code>HHMMSS</code>, así que una consulta SQL normal necesita convertir fechas y horas antes de poder comparar.</p></div>
-            <div><b>AN8</b><p>Un único número de agenda identifica a clientes, proveedores y empleados: todos viven en el mismo maestro de direcciones.</p></div>
-            <div><b>F0004 / F0005</b><p>Los "códigos definidos por el usuario" (UDC) guardan casi todas las listas de valores, como los tipos de documento <code>00/DT</code>.</p></div>
-            <div><b>Tablas Z</b><p>Las tablas acabadas en <code>Z1</code>, como <code>F0911Z1</code>, sirven de bandeja de entrada para importar transacciones por lotes desde otros sistemas.</p></div>
-          </div>
           <div class="tags" style="margin-top:20px"><span>JD Edwards E1</span><span>Orchestrator</span><span>AIS REST API</span><span>UBE</span><span>UDC</span><span>SQL</span></div>
         </div>
       </div>
