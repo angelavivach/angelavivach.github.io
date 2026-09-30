@@ -1,101 +1,317 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Portafolio</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
-        }
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 20px 0;
-            text-align: center;
-        }
-        nav {
-            display: flex;
-            justify-content: center;
-            background-color: #444;
-        }
-        nav a {
-            color: white;
-            padding: 14px 20px;
-            text-decoration: none;
-            text-align: center;
-        }
-        nav a:hover {
-            background-color: #555;
-        }
-        section {
-            padding: 20px;
-            max-width: 1000px;
-            margin: auto;
-        }
-        .project {
-            background: white;
-            margin-bottom: 20px;
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        footer {
-            text-align: center;
-            padding: 10px 0;
-            background-color: #333;
-            color: white;
-            margin-top: 30px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Angela Vivanco · Portfolio</title>
+  <meta name="description" content="Portfolio de Angela Vivanco, desarrolladora de aplicaciones multiplataforma.">
+  <link rel="icon" href="https://avatars.githubusercontent.com/u/181397543?v=4">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #faf9f7;
+      --surface: #ffffff;
+      --text: #1c1b1a;
+      --muted: #6b6862;
+      --border: #e7e4df;
+      --accent: #c2410c;
+      --accent-soft: #fff1e8;
+      --tag: #f2f0ec;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #141413;
+        --surface: #1d1c1b;
+        --text: #eeece8;
+        --muted: #a19d95;
+        --border: #2e2c2a;
+        --accent: #fb923c;
+        --accent-soft: #2a1a10;
+        --tag: #262422;
+      }
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Inter", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    .wrap { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+
+    nav {
+      position: sticky; top: 0; z-index: 10;
+      background: color-mix(in srgb, var(--bg) 85%, transparent);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+    nav .wrap { display: flex; justify-content: space-between; align-items: center; height: 60px; }
+    nav .logo { font-family: "JetBrains Mono", monospace; font-weight: 500; text-decoration: none; }
+    nav ul { display: flex; gap: 24px; list-style: none; }
+    nav ul a { text-decoration: none; color: var(--muted); font-size: 14px; }
+    nav ul a:hover { color: var(--text); }
+
+    .hero { padding: 96px 0 72px; }
+    .hero .hello { font-family: "JetBrains Mono", monospace; color: var(--accent); font-size: 14px; margin-bottom: 16px; }
+    .hero h1 { font-size: clamp(36px, 7vw, 60px); line-height: 1.05; letter-spacing: -0.03em; font-weight: 700; }
+    .hero h1 span { color: var(--muted); }
+    .hero p { max-width: 580px; margin-top: 24px; font-size: 18px; color: var(--muted); }
+    .cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 11px 20px; border-radius: 10px; font-size: 15px; font-weight: 500;
+      text-decoration: none; border: 1px solid var(--border); background: var(--surface);
+      transition: transform .15s, border-color .15s;
+    }
+    .btn:hover { transform: translateY(-1px); border-color: var(--muted); }
+    .btn.primary { background: var(--text); color: var(--bg); border-color: var(--text); }
+    .btn svg { width: 18px; height: 18px; }
+
+    section { padding: 56px 0; border-top: 1px solid var(--border); }
+    h2 {
+      font-family: "JetBrains Mono", monospace; font-size: 13px; font-weight: 500;
+      text-transform: uppercase; letter-spacing: .1em; color: var(--muted); margin-bottom: 28px;
+    }
+
+    .featured {
+      display: grid; grid-template-columns: 1.1fr 1fr; gap: 32px; align-items: center;
+      background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 32px;
+    }
+    .featured .badge {
+      display: inline-block; font-size: 12px; font-weight: 600; color: var(--accent);
+      background: var(--accent-soft); padding: 4px 10px; border-radius: 99px; margin-bottom: 12px;
+    }
+    .featured h3 { font-size: 28px; letter-spacing: -0.02em; }
+    .featured p { color: var(--muted); margin: 12px 0 18px; }
+    .featured ul { list-style: none; font-size: 14px; color: var(--muted); display: grid; gap: 6px; }
+    .featured ul li::before { content: "→ "; color: var(--accent); }
+    .mock {
+      background: var(--bg); border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
+      font-family: "JetBrains Mono", monospace; font-size: 12px;
+    }
+    .mock .bar { display: flex; gap: 6px; padding: 10px 12px; border-bottom: 1px solid var(--border); }
+    .mock .bar i { width: 10px; height: 10px; border-radius: 50%; background: var(--border); }
+    .mock .body { padding: 18px; display: grid; gap: 10px; }
+    .mock .row { display: flex; justify-content: space-between; padding: 10px 12px; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; }
+    .mock .row b { color: var(--accent); font-weight: 500; }
+
+    .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 16px; }
+    .card {
+      display: flex; flex-direction: column;
+      background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 24px;
+      transition: border-color .15s, transform .15s;
+    }
+    .card:hover { border-color: var(--muted); transform: translateY(-2px); }
+    .card .icon { font-size: 22px; margin-bottom: 12px; }
+    .card h3 { font-size: 18px; letter-spacing: -0.01em; }
+    .card p { color: var(--muted); font-size: 15px; margin: 8px 0 16px; flex: 1; }
+    .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tags span {
+      font-family: "JetBrains Mono", monospace; font-size: 12px;
+      background: var(--tag); color: var(--muted); padding: 3px 8px; border-radius: 6px;
+    }
+    .card .points { list-style: none; font-size: 14px; color: var(--muted); display: grid; gap: 6px; margin: -4px 0 18px; }
+    .card .points li { padding-left: 16px; position: relative; }
+    .card .points li::before { content: "→"; position: absolute; left: 0; color: var(--accent); }
+    code { font-family: "JetBrains Mono", monospace; font-size: .9em; background: var(--tag); padding: 1px 5px; border-radius: 4px; }
+    .links { display: flex; gap: 16px; margin-top: 16px; font-size: 14px; font-weight: 500; }
+    .links a { text-decoration: none; color: var(--accent); }
+    .links a:hover { text-decoration: underline; }
+
+    .skills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .skill { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 20px; }
+    .skill h3 { font-size: 15px; margin-bottom: 12px; }
+
+    .about { display: grid; grid-template-columns: 1fr 2fr; gap: 32px; }
+    .about p { color: var(--muted); font-size: 17px; }
+    .about p + p { margin-top: 14px; }
+
+    footer { padding: 40px 0 56px; border-top: 1px solid var(--border); color: var(--muted); font-size: 14px; }
+    footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+
+    @media (max-width: 760px) {
+      nav ul { gap: 16px; }
+      nav ul li:nth-child(3) { display: none; }
+      .hero { padding: 64px 0 48px; }
+      .featured, .grid, .skills, .about { grid-template-columns: 1fr; }
+      .featured { padding: 22px; }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Mi Nombre</h1>
-        <p>Desarrollador Web | Diseñador | Tu Profesión</p>
-    </header>
+  <nav>
+    <div class="wrap">
+      <a class="logo" href="#">angelavivach</a>
+      <ul>
+        <li><a href="#proyectos">Proyectos</a></li>
+        <li><a href="#habilidades">Habilidades</a></li>
+        <li><a href="#sobre-mi">Sobre mí</a></li>
+      </ul>
+    </div>
+  </nav>
 
-    <nav>
-        <a href="#about">Sobre mí</a>
-        <a href="#projects">Proyectos</a>
-        <a href="#contact">Contacto</a>
-    </nav>
+  <header class="hero">
+    <div class="wrap">
+      <p class="hello">// hola, soy</p>
+      <h1>Angela Vivanco.<br><span>Construyo aplicaciones web y herramientas útiles.</span></h1>
+      <p>Desarrolladora de Aplicaciones Multiplataforma. Me gusta crear cosas que resuelven problemas reales: desde un sistema de control horario completo hasta scripts que automatizan tareas del día a día.</p>
+      <div class="cta">
+        <a class="btn primary" href="#proyectos">Ver proyectos</a>
+        <a class="btn" href="https://github.com/angelavivach" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.7 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.2 1.2a11 11 0 0 1 5.8 0C17.3 4.7 18.3 5 18.3 5c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.4-2.7 5.4-5.3 5.7.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A11.5 11.5 0 0 0 23.5 12C23.5 5.7 18.3.5 12 .5Z"/></svg>
+          GitHub
+        </a>
+        <a class="btn" href="mailto:avivach04@gmail.com">Contacto</a>
+      </div>
+    </div>
+  </header>
 
-    <section id="about">
-        <h2>Sobre mí</h2>
-        <p>Hola, soy [Tu Nombre], un apasionado de la tecnología y la creación de soluciones digitales. Me especializo en [tu especialidad].</p>
-    </section>
-
-    <section id="projects">
+  <main>
+    <section id="proyectos">
+      <div class="wrap">
         <h2>Proyectos</h2>
-        <div class="project">
-            <h3>Proyecto 1</h3>
-            <p>Descripción breve del proyecto. Tecnologías usadas: HTML, CSS, JavaScript.</p>
-            <a href="#" target="_blank">Ver proyecto</a>
+
+        <article class="featured">
+          <div>
+            <span class="badge">Proyecto de fin de grado</span>
+            <h3>TimeCP</h3>
+            <p>Aplicación web para que una empresa controle la jornada de su plantilla. Los empleados fichan entrada, pausas y salida, y solicitan ausencias con su justificante. El administrador gestiona usuarios, horarios, cambios de turno y días festivos, y revisa todo desde su panel.</p>
+            <ul>
+              <li>API REST en Express 5 organizada por módulos: login, usuarios, horario, fichaje y ausencias</li>
+              <li>Base de datos MySQL con 6 tablas y un esquema idempotente que crea o repara las tablas al arrancar sin borrar datos</li>
+              <li>Autenticación con JWT en cookie httpOnly y contraseñas cifradas con bcrypt</li>
+              <li>Seguridad: Helmet con CSP, rate limiting y protección CSRF</li>
+              <li>Desplegada en Render con endpoint de salud <code>/api/health</code> y usuarios de prueba automáticos</li>
+            </ul>
+            <div class="tags" style="margin-top:18px">
+              <span>Node.js</span><span>Express</span><span>MySQL</span><span>JWT</span><span>Render</span>
+            </div>
+            <div class="links">
+              <a href="https://timecp.onrender.com" target="_blank" rel="noopener">Ver demo ↗</a>
+              <a href="https://github.com/angelavivach/TFG_Mejorado" target="_blank" rel="noopener">Código ↗</a>
+            </div>
+          </div>
+          <div class="mock" aria-hidden="true">
+            <div class="bar"><i></i><i></i><i></i></div>
+            <div class="body">
+              <div class="row"><span>Entrada</span><b>08:59</b></div>
+              <div class="row"><span>Pausa</span><b>14:00 – 14:30</b></div>
+              <div class="row"><span>Salida</span><b>17:32</b></div>
+              <div class="row"><span>Horas hoy</span><b>8h 03m</b></div>
+            </div>
+          </div>
+        </article>
+
+        <div class="grid">
+          <article class="card">
+            <div class="icon">📬</div>
+            <h3>Gmail Cleaner</h3>
+            <p>App web para vaciar una bandeja de Gmail saturada en unos clics. Buscas por categorías, revisas los resultados y los mandas a la papelera en bloque.</p>
+            <ul class="points">
+              <li>15 filtros listos: promociones, newsletters con "darse de baja", pedidos, paquetería (DHL, GLS, Correos), Vinted, Wallapop, Amazon…</li>
+              <li>Nunca toca los correos destacados, y lo borrado va a la papelera, así que se puede recuperar</li>
+              <li>Permite conectar varias cuentas de Gmail con OAuth 2.0 y cambiar entre ellas</li>
+              <li>Acceso protegido con contraseña y preparada para desplegar en Render con disco persistente para los tokens</li>
+            </ul>
+            <div class="tags"><span>Python</span><span>Flask</span><span>Gmail API</span><span>OAuth</span></div>
+            <div class="links"><a href="https://limpieza-pye0.onrender.com" target="_blank" rel="noopener">Ver web ↗</a><a href="https://github.com/angelavivach/Limpieza" target="_blank" rel="noopener">Código ↗</a></div>
+          </article>
+
+          <article class="card">
+            <div class="icon">💶</div>
+            <h3>Balance Mensual</h3>
+            <p>"Ticket" mensual para controlar la economía personal: apuntas la nómina y los gastos, y ves el balance del mes de un vistazo.</p>
+            <ul class="points">
+              <li>Ingresos y gastos por categorías, con resumen de gasto por categoría</li>
+              <li>Navegación entre meses; los datos se guardan en el navegador con <code>localStorage</code></li>
+              <li>Panel de mercado con datos en tiempo real de la API pública de CoinGecko</li>
+              <li>Un solo archivo HTML sin frameworks ni dependencias</li>
+            </ul>
+            <div class="tags"><span>JavaScript</span><span>HTML</span><span>CSS</span><span>API REST</span></div>
+            <div class="links"><a href="https://balance-mensual.onrender.com" target="_blank" rel="noopener">Ver web ↗</a><a href="https://github.com/angelavivach/cuartos" target="_blank" rel="noopener">Código ↗</a></div>
+          </article>
+
+          <article class="card">
+            <div class="icon">🧹</div>
+            <h3>Scripts de automatización</h3>
+            <p>Userscripts para Tampermonkey que automatizan tareas repetitivas en redes sociales, como borrar cientos de favoritos de TikTok o limpiar listas de YouTube.</p>
+            <ul class="points">
+              <li>Panel flotante con botones Iniciar y Parar y contador de elementos eliminados</li>
+              <li>Detecta el estado del botón de favorito y comprueba que el cambio se ha aplicado antes de pasar al siguiente vídeo</li>
+              <li>Intenta recuperarse cuando encuentra publicaciones tipo carrusel</li>
+              <li>Incluye una página que copia el script con un clic y guías de instalación paso a paso</li>
+            </ul>
+            <div class="tags"><span>JavaScript</span><span>Tampermonkey</span><span>DOM</span></div>
+            <div class="links"><a href="https://github.com/angelavivach/scripts-" target="_blank" rel="noopener">Código ↗</a></div>
+          </article>
+
+          <article class="card">
+            <div class="icon">🎲</div>
+            <h3>Mini-proyectos en Python</h3>
+            <p>Colección de programas de consola: Sudoku, Ahorcado, Piedra-Papel-Tijera, calculadora y generador de contraseñas.</p>
+            <div class="tags"><span>Python</span></div>
+            <div class="links"><a href="https://github.com/angelavivach/python" target="_blank" rel="noopener">Código ↗</a></div>
+          </article>
+
+          <article class="card">
+            <div class="icon">📚</div>
+            <h3>DAM · 2.º curso</h3>
+            <p>Prácticas de acceso a datos, desarrollo de interfaces, programación de procesos y servicios y programación multimedia.</p>
+            <div class="tags"><span>Java</span><span>JDBC</span><span>Android</span></div>
+            <div class="links"><a href="https://github.com/angelavivach/24-25" target="_blank" rel="noopener">Código ↗</a></div>
+          </article>
+
+          <article class="card">
+            <div class="icon">🧮</div>
+            <h3>DAM · 1.er curso</h3>
+            <p>Ejercicios de bases de datos, programación en C y lenguajes de marcas.</p>
+            <div class="tags"><span>SQL</span><span>C</span><span>HTML/XML</span></div>
+            <div class="links"><a href="https://github.com/angelavivach/23-24" target="_blank" rel="noopener">Código ↗</a></div>
+          </article>
         </div>
-        <div class="project">
-            <h3>Proyecto 2</h3>
-            <p>Descripción breve del proyecto. Tecnologías usadas: HTML, CSS, JavaScript.</p>
-            <a href="#" target="_blank">Ver proyecto</a>
-        </div>
+      </div>
     </section>
 
-    <section id="contact">
-        <h2>Contacto</h2>
-        <p>Puedes contactarme en:</p>
-        <ul>
-            <li>Email: tuemail@example.com</li>
-            <li>LinkedIn: <a href="#" target="_blank">Tu LinkedIn</a></li>
-            <li>GitHub: <a href="#" target="_blank">Tu GitHub</a></li>
-        </ul>
+    <section id="habilidades">
+      <div class="wrap">
+        <h2>Habilidades</h2>
+        <div class="skills">
+          <div class="skill">
+            <h3>Lenguajes</h3>
+            <div class="tags"><span>JavaScript</span><span>Python</span><span>Java</span><span>SQL</span><span>C</span><span>HTML/CSS</span></div>
+          </div>
+          <div class="skill">
+            <h3>Backend y datos</h3>
+            <div class="tags"><span>Node.js</span><span>Express</span><span>Flask</span><span>MySQL</span><span>REST</span><span>JWT/OAuth</span></div>
+          </div>
+          <div class="skill">
+            <h3>Herramientas</h3>
+            <div class="tags"><span>Git</span><span>GitHub</span><span>Render</span><span>Railway</span><span>VS Code</span></div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <footer>
-        <p>&copy; 2025 Mi Nombre | Todos los derechos reservados</p>
-    </footer>
+    <section id="sobre-mi">
+      <div class="wrap about">
+        <h2>Sobre mí</h2>
+        <div>
+          <p>Soy técnica en Desarrollo de Aplicaciones Multiplataforma. Disfruto del ciclo completo de un proyecto: diseñar la base de datos, programar la API, cuidar la seguridad y dejarlo desplegado para que cualquiera pueda usarlo.</p>
+          <p>Estoy buscando nuevas oportunidades para seguir aprendiendo y aportar en un equipo. Si te interesa mi trabajo, escríbeme.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>© 2026 Angela Vivanco</span>
+      <span><a href="https://github.com/angelavivach">github.com/angelavivach</a> · <a href="mailto:avivach04@gmail.com">avivach04@gmail.com</a></span>
+    </div>
+  </footer>
 </body>
 </html>
