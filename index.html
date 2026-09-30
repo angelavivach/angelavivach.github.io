@@ -121,6 +121,7 @@
       font-family: "JetBrains Mono", monospace; font-size: 12px;
       background: var(--tag); color: var(--muted); padding: 3px 8px; border-radius: 6px;
     }
+    .card .shot { width: 100%; border-radius: 10px; border: 1px solid var(--border); margin: 4px 0 14px; background: #fff; }
     .card .points { list-style: none; font-size: 14px; color: var(--muted); display: grid; gap: 6px; margin: -4px 0 18px; }
     .card .points li { padding-left: 16px; position: relative; }
     .card .points li::before { content: "→"; position: absolute; left: 0; color: var(--accent); }
@@ -325,6 +326,7 @@
           <article class="card">
             <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="m19 9-5 5-4-4-3 3"/></svg></div>
             <h3>DSMarket · Análisis de ventas</h3>
+            <img class="shot" src="img/dsmarket-eventos.jpg" alt="Gráfica: efecto de cada festivo en las ventas frente al mismo día de la semana" loading="lazy">
             <p>Proyecto final del máster de Data Science &amp; AI: análisis de 58 millones de registros de ventas de 3.049 productos en 10 tiendas durante 5 años, para sacar decisiones de negocio.</p>
             <ul class="points">
               <li>Todo el dataset en memoria sin muestrear, gracias a tipos compactos y a trabajar en formato ancho</li>
@@ -334,6 +336,19 @@
             </ul>
             <div class="tags"><span>Python</span><span>pandas</span><span>scikit-learn</span><span>K-Means</span><span>Data Science</span></div>
             <div class="links"><a href="https://github.com/angelavivach/dataIA/tree/main/Master%20nuclio/DSMarket_corregido/DSMarket" target="_blank" rel="noopener">Código ↗</a></div>
+          </article>
+
+          <article class="card">
+            <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg></div>
+            <h3>Máster Data Science &amp; AI · Prácticas</h3>
+            <p>Ejercicios y entregables del máster en Nuclio Digital School, de los fundamentos de Python a la preparación de datos para modelos.</p>
+            <ul class="points">
+              <li>EDA y limpieza de un dataset de películas de IMDB: duplicados, nulos y tipos de datos</li>
+              <li>Entregable de Data Engineering sobre precios de coches BMW: selección de variables, tratamiento de nulos y visualización</li>
+              <li>Prácticas de NumPy, pandas y control de flujo</li>
+            </ul>
+            <div class="tags"><span>Python</span><span>pandas</span><span>NumPy</span><span>seaborn</span><span>Jupyter</span></div>
+            <div class="links"><a href="https://github.com/angelavivach/dataIA" target="_blank" rel="noopener">Código ↗</a></div>
           </article>
 
           <article class="card">
