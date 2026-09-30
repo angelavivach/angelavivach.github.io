@@ -21,6 +21,10 @@
       --accent: #c2410c;
       --accent-soft: #fff1e8;
       --tag: #f2f0ec;
+      --code-bg: #f6f4f0;
+      --code-text: #2b2a28;
+      --code-str: #15803d;
+      --code-num: #7c3aed;
     }
     @media (prefers-color-scheme: dark) {
       :root {
@@ -32,6 +36,10 @@
         --accent: #fb923c;
         --accent-soft: #2a1a10;
         --tag: #262422;
+        --code-bg: #161514;
+        --code-text: #e4e1db;
+        --code-str: #86efac;
+        --code-num: #c4b5fd;
       }
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -115,13 +123,25 @@
     }
     .card .icon svg { width: 20px; height: 20px; }
     .card h3 { font-size: 18px; letter-spacing: -0.01em; }
-    .card p { color: var(--muted); font-size: 15px; margin: 8px 0 16px; flex: 1; }
+    .card p { color: var(--muted); font-size: 15px; margin: 8px 0 16px; }
+    .card .tags { margin-top: auto; }
+    .snippet { margin: 0 0 18px; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; background: var(--code-bg); }
+    .snippet figcaption { display: flex; justify-content: space-between; gap: 12px; padding: 8px 12px; border-bottom: 1px solid var(--border); font-family: "JetBrains Mono", monospace; font-size: 11px; color: var(--muted); }
+    .snippet figcaption span:first-child { color: var(--text); }
+    .snippet pre { font-variant-ligatures: none; margin: 0; padding: 14px; overflow-x: auto; font-family: "JetBrains Mono", monospace; font-size: 12px; line-height: 1.6; color: var(--code-text); }
+    .snippet code { font: inherit; background: none; padding: 0; }
+    .tok-k { color: var(--accent); }
+    .tok-s { color: var(--code-str); }
+    .tok-c { color: var(--muted); font-style: italic; }
+    .tok-n { color: var(--code-num); }
     .tags { display: flex; flex-wrap: wrap; gap: 6px; }
     .tags span {
       font-family: "JetBrains Mono", monospace; font-size: 12px;
       background: var(--tag); color: var(--muted); padding: 3px 8px; border-radius: 6px;
     }
+    .grid > *, .card, .snippet { min-width: 0; }
     .card .shot { width: 100%; border-radius: 10px; border: 1px solid var(--border); margin: 4px 0 14px; background: #fff; }
+    .card .shot.narrow { width: 70%; align-self: center; }
     .card .points { list-style: none; font-size: 14px; color: var(--muted); display: grid; gap: 6px; margin: -4px 0 18px; }
     .card .points li { padding-left: 16px; position: relative; }
     .card .points li::before { content: "→"; position: absolute; left: 0; color: var(--accent); }
@@ -342,9 +362,11 @@
             <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/></svg></div>
             <h3>Máster Data Science &amp; AI · Prácticas</h3>
             <p>Ejercicios y entregables del máster en Nuclio Digital School, de los fundamentos de Python a la preparación de datos para modelos.</p>
+            <img class="shot narrow" src="img/bmw-correlacion.jpg" alt="Matriz de correlación entre precio, kilómetros y potencia de coches BMW" loading="lazy">
             <ul class="points">
               <li>EDA y limpieza de un dataset de películas de IMDB: duplicados, nulos y tipos de datos</li>
               <li>Entregable de Data Engineering sobre precios de coches BMW: selección de variables, tratamiento de nulos y visualización</li>
+              <li>Análisis de correlaciones: la potencia es la variable que más se relaciona con el precio (0,64) y los kilómetros lo reducen (−0,41)</li>
               <li>Prácticas de NumPy, pandas y control de flujo</li>
             </ul>
             <div class="tags"><span>Python</span><span>pandas</span><span>NumPy</span><span>seaborn</span><span>Jupyter</span></div>
@@ -355,6 +377,20 @@
             <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
             <h3>Gmail Cleaner</h3>
             <p>App web para vaciar una bandeja de Gmail saturada en unos clics. Buscas por categorías, revisas los resultados y los mandas a la papelera en bloque.</p>
+            <figure class="snippet">
+              <figcaption><span>app.py</span><span>reintentos con espera exponencial</span></figcaption>
+              <pre data-lang="py"><code>def _mover_a_papelera(svc, msg_id):
+    for intento in range(5):
+        try:
+            svc.users().messages().trash(userId=&#x27;me&#x27;, id=msg_id).execute()
+            return True
+        except HttpError as e:
+            if e.resp.status in (429, 500, 503):
+                time.sleep(2 ** intento)
+            else:
+                return False
+    return False</code></pre>
+            </figure>
             <ul class="points">
               <li>15 filtros listos: promociones, newsletters con "darse de baja", pedidos, paquetería (DHL, GLS, Correos), Vinted, Wallapop, Amazon…</li>
               <li>Nunca toca los correos destacados, y lo borrado va a la papelera, así que se puede recuperar</li>
@@ -369,6 +405,19 @@
             <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 17.5v-11"/></svg></div>
             <h3>Balance Mensual</h3>
             <p>"Ticket" mensual para controlar la economía personal: apuntas la nómina y los gastos, y ves el balance del mes de un vistazo.</p>
+            <figure class="snippet">
+              <figcaption><span>index.html</span><span>movimientos y totales del mes</span></figcaption>
+              <pre data-lang="js"><code>function currentMonthEntries(){
+  const key = monthKey(viewDate);
+  return entries.filter(e =&gt; e.date &amp;&amp; e.date.slice(0,7) === key)
+    .sort((a,b) =&gt; a.date.localeCompare(b.date));
+}
+
+const totalIngresos = monthEntries.filter(e=&gt;e.type===&#x27;ingreso&#x27;)
+  .reduce((s,e)=&gt;s+e.amount,0);
+const totalGastos = monthEntries.filter(e=&gt;e.type===&#x27;gasto&#x27;)
+  .reduce((s,e)=&gt;s+e.amount,0);</code></pre>
+            </figure>
             <ul class="points">
               <li>Ingresos y gastos por categorías, con resumen de gasto por categoría</li>
               <li>Navegación entre meses; los datos se guardan en el navegador con <code>localStorage</code></li>
@@ -383,6 +432,20 @@
             <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 17 10 11 4 5"/><line x1="12" x2="20" y1="19" y2="19"/></svg></div>
             <h3>Scripts de automatización</h3>
             <p>Userscripts para Tampermonkey que automatizan tareas repetitivas en redes sociales, como borrar cientos de favoritos de TikTok o limpiar listas de YouTube.</p>
+            <figure class="snippet">
+              <figcaption><span>tiktok_favoritos.user.js</span><span>localizar el botón de favoritos</span></figcaption>
+              <pre data-lang="js"><code>function findFavorite() {
+  const all = [...document.querySelectorAll(
+    &#x27;button,[role=&quot;button&quot;],div[tabindex=&quot;0&quot;],div[tabindex=&quot;-1&quot;]&#x27;
+  )];
+  for (const el of all) {
+    const t = textOf(el);
+    if (/favorite|favourite|favorito|bookmark|guardar|guardado/.test(t)) {
+      return clickable(el);
+    }
+  }
+  // En algunas versiones de TikTok el botón no tiene texto/aria-label.</code></pre>
+            </figure>
             <ul class="points">
               <li>Panel flotante con botones Iniciar y Parar y contador de elementos eliminados</li>
               <li>Detecta el estado del botón de favorito y comprueba que el cambio se ha aplicado antes de pasar al siguiente vídeo</li>
@@ -397,6 +460,29 @@
             <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
             <h3>Mini-proyectos en Python</h3>
             <p>Colección de programas de consola: Sudoku, Ahorcado, Piedra-Papel-Tijera, calculadora y generador de contraseñas.</p>
+            <figure class="snippet">
+              <figcaption><span>Sudoku.py</span><span>backtracking recursivo</span></figcaption>
+              <pre data-lang="py"><code># Función para resolver el tablero usando backtracking
+def resolver_sudoku(tablero):
+    vacio = encontrar_vacio(tablero)
+    if not vacio:
+        return True  # El tablero está completo y resuelto
+    else:
+        fila, columna = vacio
+
+    for numero in range(1, 10):
+        if es_valido(tablero, numero, (fila, columna)):
+            tablero[fila][columna] = numero
+            if resolver_sudoku(tablero):
+                return True
+            tablero[fila][columna] = 0
+    return False</code></pre>
+            </figure>
+            <ul class="points">
+              <li>Sudoku resuelto con backtracking recursivo</li>
+              <li>Generador de contraseñas con <code>random</code> y <code>string</code></li>
+              <li>Juegos de consola: Ahorcado y Piedra-Papel-Tijera, y una calculadora</li>
+            </ul>
             <div class="tags"><span>Python</span></div>
             <div class="links"><a href="https://github.com/angelavivach/python" target="_blank" rel="noopener">Código ↗</a></div>
           </article>
@@ -405,6 +491,21 @@
             <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
             <h3>DAM · 2.º curso</h3>
             <p>Prácticas de acceso a datos, desarrollo de interfaces, programación de procesos y servicios y programación multimedia.</p>
+            <figure class="snippet">
+              <figcaption><span>ejer1Recursividad.java</span><span>acceso a datos · ficheros</span></figcaption>
+              <pre data-lang="java"><code>public static void listarFicheros(File d) {
+    File[] ficheros = d.listFiles();
+
+    for (File f : ficheros) {
+        if (f.isFile()) {
+            System.out.println(f.getName() + &quot; es un fichero&quot;);
+        }
+        if (f.isDirectory()) {
+            System.out.println(f.getName() + &quot; es un directorio&quot;);
+        }
+    }
+}</code></pre>
+            </figure>
             <div class="tags"><span>Java</span><span>JDBC</span><span>Android</span></div>
             <div class="links"><a href="https://github.com/angelavivach/24-25" target="_blank" rel="noopener">Código ↗</a></div>
           </article>
@@ -413,6 +514,21 @@
             <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
             <h3>DAM · 1.er curso</h3>
             <p>Ejercicios de bases de datos, programación en C y lenguajes de marcas.</p>
+            <figure class="snippet">
+              <figcaption><span>BANCO.sql</span><span>modelo relacional de un banco</span></figcaption>
+              <pre data-lang="sql"><code>CREATE TABLE IF NOT EXISTS `BANCO`.`CLIENTE` (
+  `CODIGO` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  `DNI` VARCHAR(9) NULL,
+  `NOMBRE` VARCHAR(45) NOT NULL,
+  `FECHA_NACIMIENTO` DATE NOT NULL,
+  `SUCURSAL_NUMERO` TINYINT(4) UNSIGNED NOT NULL,
+  PRIMARY KEY (`CODIGO`),
+  UNIQUE INDEX `DNI_UNIQUE` (`DNI` ASC) VISIBLE,
+  CONSTRAINT `fk_CLIENTE_SUCURSAL1`
+    FOREIGN KEY (`SUCURSAL_NUMERO`)
+    REFERENCES `BANCO`.`SUCURSAL` (`NUMERO`))
+ENGINE = InnoDB;</code></pre>
+            </figure>
             <div class="tags"><span>SQL</span><span>C</span><span>HTML/XML</span></div>
             <div class="links"><a href="https://github.com/angelavivach/23-24" target="_blank" rel="noopener">Código ↗</a></div>
           </article>
@@ -493,5 +609,29 @@
       <span><a href="https://github.com/angelavivach">github.com/angelavivach</a> · <a href="https://www.linkedin.com/in/angela-vivanco">LinkedIn</a> · <a href="mailto:avivach04@gmail.com">avivach04@gmail.com</a></span>
     </div>
   </footer>
+  <script>
+    (function () {
+      var KW = {
+        py: "def|return|for|in|if|else|elif|try|except|not|and|or|True|False|None|import|from|while|class",
+        js: "function|const|let|var|return|for|of|if|else|new|await|async|throw|true|false|null",
+        java: "public|static|void|new|for|if|else|return|class|import|package|private|true|false|null",
+        sql: "CREATE|TABLE|IF|NOT|EXISTS|INT|UNSIGNED|NULL|AUTO_INCREMENT|VARCHAR|DATE|TINYINT|PRIMARY|KEY|UNIQUE|INDEX|ASC|VISIBLE|CONSTRAINT|FOREIGN|REFERENCES|ENGINE"
+      };
+      document.querySelectorAll(".snippet pre").forEach(function (pre) {
+        var lang = pre.dataset.lang, code = pre.querySelector("code");
+        var comment = lang === "py" ? "#[^\\n]*" : lang === "sql" ? "--[^\\n]*" : "\\/\\/[^\\n]*";
+        var re = new RegExp("(" + comment + ")|('(?:[^'\\\\\\n]|\\\\.)*'|\"(?:[^\"\\\\\\n]|\\\\.)*\"|\\/(?![\\/*])(?:[^\\/\\n\\\\]|\\\\.)+\\/(?=\\.test))|\\b(" + KW[lang] + ")\\b|\\b(\\d+)\\b", "g");
+        var text = code.textContent, out = "", last = 0, m;
+        var esc = function (t) { return t.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); };
+        while ((m = re.exec(text))) {
+          out += esc(text.slice(last, m.index));
+          var cls = m[1] ? "c" : m[2] ? "s" : m[3] ? "k" : "n";
+          out += '<span class="tok-' + cls + '">' + esc(m[0]) + "</span>";
+          last = re.lastIndex;
+        }
+        code.innerHTML = out + esc(text.slice(last));
+      });
+    })();
+  </script>
 </body>
 </html>
