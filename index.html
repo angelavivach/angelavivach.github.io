@@ -100,6 +100,9 @@
     .featured p { color: var(--muted); margin: 12px 0 18px; }
     .featured ul { list-style: none; font-size: 14px; color: var(--muted); display: grid; gap: 6px; }
     .featured ul li::before { content: "→ "; color: var(--accent); }
+    .featured-shot { width: 100%; border-radius: 12px; border: 1px solid var(--border); display: block; }
+    .featured .credit { font-size: 13px; margin: 14px 0 0; }
+    .featured .credit a { color: var(--muted); }
     .mock {
       background: var(--bg); border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
       font-family: "JetBrains Mono", monospace; font-size: 12px;
@@ -353,6 +356,29 @@
               <div class="row"><span>Horas hoy</span><b>8h 03m</b></div>
             </div>
           </div>
+        </article>
+
+        <article class="featured" style="margin-top:16px">
+          <div>
+            <span class="badge">Asistente de voz con IA</span>
+            <h3>Odín</h3>
+            <p>Asistente de voz personal en español, al estilo de JARVIS. Dices «Oye Odín», te escucha, te contesta en voz alta y puede consultar y modificar tu calendario. El cerebro es Claude y la interfaz funciona en el navegador.</p>
+            <ul>
+              <li>Activación por voz, reconocimiento de voz y voz sintética con ElevenLabs, con alternativa del navegador si no hay clave</li>
+              <li>Arquitectura en dos procesos: interfaz en React y puente en Node con el Claude Agent SDK, comunicados por WebSocket</li>
+              <li>Ayudante en Swift con EventKit para leer y modificar el Calendario de macOS, incluidos los eventos que se repiten</li>
+              <li>Seguro por diseño: todo es de solo lectura y no cambia nada del calendario sin tu «sí» por voz</li>
+              <li>Interfaz 3D propia con Three.js: una esfera de puntos que reacciona a la voz y cambia de color al escuchar, pensar o hablar</li>
+            </ul>
+            <div class="tags" style="margin-top:18px">
+              <span>TypeScript</span><span>React</span><span>Three.js</span><span>Node.js</span><span>Claude Agent SDK</span><span>Swift</span><span>ElevenLabs</span>
+            </div>
+            <div class="links">
+              <a href="https://github.com/angelavivach/AsistenteIA" target="_blank" rel="noopener">Código ↗</a>
+            </div>
+            <p class="credit">Basado en <a href="https://github.com/adewaskar/jarvis" target="_blank" rel="noopener">J.A.R.V.I.S.</a> de adewaskar (MIT), adaptado al español y rediseñado.</p>
+          </div>
+          <img class="featured-shot" src="img/odin.jpg" alt="Pantalla de inicio de Odín: el nombre ODÍN con degradado violeta y naranja sobre ondas de puntos" loading="lazy">
         </article>
 
         <div class="grid">
